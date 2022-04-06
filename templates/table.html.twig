@@ -1,0 +1,19 @@
+<table {{ render_html_attributes(table.config.option('attr', [])) }}>
+
+    <thead>
+        <tr {{ render_html_attributes(table.config.option('row_attr', [])) }}>
+            {% for heading in table.heading %}
+                {{ heading.render() }}
+            {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr {{ render_html_attributes(table.config.option('row_attr', [])) }}>
+            {% for item in table.items %}
+                {{ item.render() }}
+            {% endfor %}
+        </tr>
+    </tbody>
+
+</table>

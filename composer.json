@@ -1,0 +1,25 @@
+{
+  "name": "dwalczyk/table-bundle",
+  "description": "Symfony bundle for tables",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^8.0",
+    "ext-json": "*",
+    "symfony/framework-bundle": "^6.0",
+    "symfony/event-dispatcher": "^6.0",
+    "symfony/property-access": "^6.0",
+    "dwalczyk/paginator-bundle": "^1.0",
+    "symfony/twig-bundle": "^6.0",
+    "symfony/options-resolver": "^6.0"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "secure-http": false
+  },
+  "autoload": {
+    "psr-4": {
+      "DWalczyk\\Cruder\\": "src/"
+    }
+  }
+}
