@@ -1,0 +1,39 @@
+services:
+
+  _defaults:
+    autowire: true # Automatically injects dependencies in services
+    autoconfigure: true
+
+  _instanceof:
+    DWalczyk\Table\ColumnType\ColumnTypeInterface:
+      tags: [ 'table.column_type' ]
+
+  DWalczyk\Table\TableFactory: ~
+  DWalczyk\Table\BlockNameResolver: ~
+  DWalczyk\Table\ColumnTypeResolver: ~
+  DWalczyk\Table\Extension\Core\ColumnType\BaseColumnType: ~
+
+
+  DWalczyk\Table\Renderer\RendererInterface: '@DWalczyk\Table\Extension\Twig\TwigRenderer'
+  DWalczyk\Table\TableFactoryInterface: '@DWalczyk\Table\TableFactory'
+  DWalczyk\Table\ColumnTypeResolverInterface: '@DWalczyk\Table\ColumnTypeResolver'
+
+
+  # twig extension
+
+  DWalczyk\Table\Extension\Twig\TwigRenderer:
+    arguments:
+      #$templatePaths: [
+      #    '@DWalczyk\Table\template.html.twig'
+      #]
+
+  DWalczyk\Table\Extension\Twig\TableExtension:
+    tags: [ 'twig.extension' ]
+
+
+
+
+  DWalczyk\Table\ColumnTypeRegistryInterface:
+    class: 'DWalczyk\Table\ColumnTypeRegistry'
+    arguments:
+      $types: !tagged 'table.column_type'
